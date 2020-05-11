@@ -1,0 +1,26 @@
+{
+  "name": "dating-feature",
+  "version": "1.0.0",
+  "description": "This is my take on a dating app feature",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mynorloops/dating-feature.git"
+  },
+  "keywords": [
+    "dating",
+    "app",
+    "feature",
+    "lonely",
+    "sim"
+  ],
+  "author": "Mynor Lobos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mynorloops/dating-feature/issues"
+  },
+  "homepage": "https://github.com/Mynorloops/dating-feature#readme"
+}
