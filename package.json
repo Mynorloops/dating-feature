@@ -22,5 +22,10 @@
   "bugs": {
     "url": "https://github.com/Mynorloops/dating-feature/issues"
   },
-  "homepage": "https://github.com/Mynorloops/dating-feature#readme"
+  "homepage": "https://github.com/Mynorloops/dating-feature#readme",
+  "dependencies": {
+    "camelcase": "^6.0.0",
+    "express": "^4.17.1",
+    "pug": "^2.0.4"
+  }
 }
