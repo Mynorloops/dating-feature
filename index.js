@@ -3,11 +3,10 @@
 
 const express = require("express");
 const path = require("path");
-
 const app = express();
 
-//Allows for different routes when written on the url. Example: localhost:3000/text.html
-app.use(express.static(path.join(__dirname, "public")));
+//Allows for dynamic use of ejs site.
+app.use("/public", express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 app.get("/:userQuery", (req, res) => {
   res.render("index", { data: { userQuery: req.params.userQuery } });
