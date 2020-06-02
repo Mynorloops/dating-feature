@@ -4,6 +4,7 @@
 const express = require("express");
 const path = require("path");
 const app = express();
+//const name = require("name");
 
 //Allows for dynamic use of ejs site.
 app.use("/public", express.static(path.join(__dirname, "public")));
@@ -11,8 +12,9 @@ app.set("view engine", "ejs");
 app.get("/:userQuery", (req, res) => {
   res.render("index", { data: { userQuery: req.params.userQuery } });
 });
+//app.get("name");
 //Establishes the needed port, in this case 3000
 const PORT = process.env.PORT || 3000;
 
 //Telles node when server has started
-app.listen(PORT, () => console.log("Server started on port ${PORT}"));
+app.listen(PORT, () => console.log("Server started on port 3000"));

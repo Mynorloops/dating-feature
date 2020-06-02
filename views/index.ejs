@@ -4,10 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    <link href="/public/css/style.css" rel="stylesheet" type="text/css" />
+    <script src="gears.js"></script>
+    <title>My app</title>
   </head>
   <body>
-    <h1>Welcome. <%= data.userQuery %>.</h1>
+    <div id="phone">
+      <header><h1>Hello <%= data.userQuery %>!</h1></header>
+      <main>
+        <!-- This button activates the dating simulator -->
+        <section class="question-block">
+          <button id="date-sim">
+            <img class="icon" src="/public/images/chat.png" />
+          </button>
+        </section>
+        <!-- This panel should change when interacting with the like or dislike buttons. it displays information -->
+        <div class="main_square" id="PFfoto">
+          <img src="/public/images/yentl.png" />
+        </div>
+      </main>
+      <footer>
+        <!-- This button swipes the person away. -->
+        <button class="button" id="Next">
+          <p><img src="/public/images/cross.png" /></p>
+        </button>
+        <!-- This button likes the person. -->
+        <button class="button" id="Heart">
+          <p><img src="/public/images/heart.png" /></p>
+        </button>
+      </footer>
+    </div>
   </body>
 </html>

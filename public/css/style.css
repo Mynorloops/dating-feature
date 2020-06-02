@@ -1,0 +1,102 @@
+body {
+  display: flex;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 12.5pt;
+  background-color: grey;
+  color: azure;
+}
+
+#phone {
+  width: 300px;
+  height: 600px;
+  border: solid;
+  border-color: azure;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  background-color: white;
+  color: black;
+}
+
+footer {
+  border-radius: 10px;
+  border-color: azure;
+  border-width: 2px;
+  border: solid;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.main_square {
+  border-width: 2px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  text-align: center;
+  border: solid;
+  border-radius: 10px;
+  border-color: black;
+  overflow: hidden;
+}
+
+button {
+  display: flex;
+  align-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: lightgray;
+  border: solid;
+  border-radius: 40px;
+  border-color: azure;
+  text-align: center;
+  transition: all 0.3s;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+button:hover {
+  display: flex;
+  align-content: center;
+  border: solid;
+  border-radius: 40px;
+  border-color: blueviolet;
+  text-align: center;
+  transition: all 0.3s;
+  display: inline-block;
+  width: 100%;
+}
+
+#date-sim {
+  background-color: lightskyblue;
+  width: 55px;
+  height: 55px;
+}
+
+.icon {
+  text-align: center;
+}
+
+.question-block {
+  overflow: hidden;
+}
+
+/* After activatng sim */
+
+.question-block-active {
+  border-width: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  text-align: center;
+  border: solid;
+  border-radius: 10px;
+  border-color: black;
+  overflow: hidden;
+  height: 400px;
+}
