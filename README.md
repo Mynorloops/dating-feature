@@ -22,3 +22,9 @@ This project includes the following dependancies:
 ## A little something about this project:
 
 I'm using Node.js to have my JS files connect with eachother. Every JS has the purpuse of their names. So profiles is used as a local array of information to be used somewhere else and so on.
+
+Sources that helped me make this possible:
+Understanding API: https://www.taniarascia.com/how-to-connect-to-an-api-with-javascript/
+Understanding Express: https://www.youtube.com/watch?v=L72fhGm1tfE&t=1614s
+Understanding MondoDB: https://www.youtube.com/watch?v=-56x56UppqQ&t=1250s
+API I want to use for generating the questions later in development: https://opentdb.com/api_config.php
