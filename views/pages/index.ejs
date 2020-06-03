@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link href="/public/css/style.css" rel="stylesheet" type="text/css" />
-    <script src="gears.js"></script>
     <title>My app</title>
   </head>
   <body>
     <div id="phone">
-      <header><h1>Hello <%= data.userQuery %>!</h1></header>
+      <header><h1>Hello!</h1></header>
       <main>
         <!-- This button activates the dating simulator -->
         <section class="question-block">
@@ -32,7 +31,10 @@
         <button class="button" id="Heart">
           <p><img src="/public/images/heart.png" /></p>
         </button>
+        <section><p><%= questions[1].question %></p></section>
+        <input />
       </footer>
     </div>
+    <script src="gears.js"></script>
   </body>
 </html>

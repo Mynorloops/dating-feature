@@ -1,8 +1,11 @@
 const profiles = require("./profiles");
 
-const questionBlock = document.querySelector(".question-block");
-const add = document.querySelector("#date-sim");
+var questionBlock = document.querySelector(".question-block");
+var dateSim = document.querySelector("#date-sim");
 
-add.addEventListener("click", () => {
-  questionBlock.classList.add("question-block-active");
-});
+function show() {
+  console.log("expand");
+  questionBlock.classList.toggle(".question-block-active");
+}
+
+dateSim.addEventListener("click", show);
