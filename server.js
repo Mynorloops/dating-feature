@@ -2,76 +2,48 @@
 //Server uses Nodemon to automatically restart when js file is saved.
 
 const express = require("express");
-//const path = require("path");
-const questions = require("./questions").default;
-
 const app = express();
+const mongoose = require("mongoose");
+require("dotenv/config");
+const bodyParser = require("body-parser");
 
-//gets the questions as a json array
-app.get("/api/questions", (req, res) => res.json(questions));
+let message = "je suis un super message";
+//The set-up to the data base
+mongoose.connect(
+  process.env.DB_CONNECTION,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => console.log("mongoose works")
+);
 
-//static folder
-//If you used an HTML based static server, the next line should be enabled.
-//app.use(express.static(path.join(__dirname, "public")));
-
-//The rest id for an EJS templating server.
+//Use this to specify that I'm using EJS
 app.set("view engine", "ejs");
+
+//middleware for routing to question-array for testing purpuses
+app.use(bodyParser.json());
+
+//Route for API
+const Routes = require("./routes/question");
+app.use("/index", Routes);
+
+//lets me use static files like images and css
+app.use(express.static(__dirname + "/static"));
+
+//Home
 app.get("/", (req, res) => {
   //the idea is to link the const = questions array from above to the render underneath.
-  res.render("home");
+  res.render("home", { message: message });
 });
 
-app.set("view engine", "ejs");
+//Index route
 app.get("/index", (req, res) => {
-  res.render("pages/index", {
-    questions: [
-      {
-        id: 1,
-        question: "What's your favorite animal?",
-        answered: false,
-        answer: "//if answered = true answer =user.input"
-      },
-      {
-        id: 2,
-        question: "Pizza on pineapple, yes or no?",
-        answered: false,
-        answer: "//if answered = true answer =user.input"
-      },
-
-      {
-        id: 3,
-        question: "Wood on pineapple, yes or no?",
-        answered: false,
-        answer: "//if answered = true answer =user.input"
-      }
-    ]
-  });
-});
-
-app.set("view engine", "ejs");
-app.get("/about", (req, res) => {
-  res.render("pages/about");
-});
-
-app.set("view engine", "ejs");
-app.get("/answer", (req, res) => {
-  res.render("pages/answer");
-});
-
-app.set("view engine", "ejs");
-app.get("/contact", (req, res) => {
-  res.render("pages/contact");
-});
-
-app.set("view engine", "ejs");
-app.get("/question", (req, res) => {
-  res.render("pages/question");
+  //the idea is to link the const = questions array from above to the render underneath.
+  res.render("pages/index", { message: message });
 });
 
 //Establishes the needed port, in this case 3000
 const PORT = process.env.PORT || 3000;
 
-//Telles node when server has started
+//Tells node when server has started
 app.listen(PORT, () => console.log("Server started on port 3000"));
 
 //source: https://www.youtube.com/watch?v=L72fhGm1tfE&t=1614s
