@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+
 const Questions = require("../models/Questions");
 
 // turning the res.render into console.log GETs object in terminal Gets back all questions
@@ -10,6 +11,10 @@ router.get("/", async (req, res) => {
   } catch (err) {
     res.json({ message: err });
   }
+});
+
+router.get("add", function(req, res, next) {
+  res.render("home");
 });
 
 // POSTs json info to the database
@@ -24,6 +29,23 @@ router.post("/", async (req, res) => {
   } catch (err) {
     res.json({ message: err });
   }
+});
+
+router.post("/add", function(req, res, next) {
+  console.log(req.body);
+  const mybodydata = {
+    Ans: req.body.Ans
+  };
+
+  let data = questionModel(mybodydata);
+
+  data.save(function(err) {
+    if (err) {
+      res.render("home", { message: "No submission" });
+    } else {
+      res.render("home", { message: "you submitted your answer" });
+    }
+  });
 });
 
 //Specific question

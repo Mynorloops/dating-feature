@@ -7,21 +7,24 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <title>My app</title>
   </head>
+</html>
+
   <body>
     <div id="phone">
       <header><h1>Answer</h1></header>
       <main>
-        <!-- Field for question to appear -->
+
         <section class="question-block"></section>
-        <%= message %>
         <section class="answer-block"><input /></section>
       </main>
-      <!-- Field for input from user "an answer" to appear -->
+      <%= questionAsked.Que %>
       <footer>
-        <!-- This button swipes the person away. -->
-        <button class="button">Next</button>
+        <button class="button"><a href="/home.ejs">delete</a></button>
+        <button class="button"><a href="/add">add</a></button>
+        <form method="POST"><button class="button">submit<a href="/display"></a></button></form>
       </footer>
+      <%= questionAsked.Que %>
     </div>
-    <script src="gears.js"></script>
+    <script src="js/index.js"></script>
   </body>
 </html>

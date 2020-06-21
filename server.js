@@ -6,8 +6,9 @@ const app = express();
 const mongoose = require("mongoose");
 require("dotenv/config");
 const bodyParser = require("body-parser");
-
-let message = "je suis un super message";
+const questionModel = require("../dating-feature/models/Questions");
+const Routes = require("./routes/questionRouter");
+const sessions = require("express-session");
 //The set-up to the data base
 mongoose.connect(
   process.env.DB_CONNECTION,
@@ -19,26 +20,32 @@ mongoose.connect(
 app.set("view engine", "ejs");
 
 //middleware for routing to question-array for testing purpuses
+
 app.use(bodyParser.json());
-
-//Route for API
-const Routes = require("./routes/question");
-app.use("/index", Routes);
-
-//lets me use static files like images and css
-app.use(express.static(__dirname + "/static"));
+app.use("/index", Routes); //Route for API
+app.use(express.static(__dirname + "/static")); //lets me use static files like images and css
 
 //Home
 app.get("/", (req, res) => {
-  //the idea is to link the const = questions array from above to the render underneath.
-  res.render("home", { message: message });
+  let randomQuestionId = Math.floor(Math.random() * 3 + 1);
+
+  const questionQuery = questionModel.findOne(
+    { id: randomQuestionId },
+    "Que",
+    function(err, question) {
+      if (err) return handleError(err);
+      res.render("home", { questionAsked: question });
+    }
+  );
 });
 
+//how to get data from post
+
 //Index route
-app.get("/index", (req, res) => {
-  //the idea is to link the const = questions array from above to the render underneath.
-  res.render("pages/index", { message: message });
-});
+// app.get("/index", (req, res) => {
+//   //the idea is to link the const = questions array from above to the render underneath.
+//   res.render("pages/index", { message: message });
+// });
 
 //Establishes the needed port, in this case 3000
 const PORT = process.env.PORT || 3000;
