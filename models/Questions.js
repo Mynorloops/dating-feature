@@ -8,7 +8,15 @@ const QuestionSchema = mongoose.Schema({
   Ans: {
     type: String,
     required: true
+  },
+  id: {
+    type: Number,
+    require: true
   }
 });
 
 module.exports = mongoose.model("Questions", QuestionSchema);
+
+//Que: WHAT DO YOU WANT
+//Ans: Because I do
+//Id: 4

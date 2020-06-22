@@ -31,27 +31,27 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.post("/add", function(req, res, next) {
-  console.log(req.body);
-  const mybodydata = {
-    Ans: req.body.Ans
-  };
+// router.post("/add", function(req, res, next) {
+//   console.log(req.body);
+//   const mybodydata = {
+//     Ans: req.body.Ans
+//   };
 
-  let data = questionModel(mybodydata);
+//   let data = questionModel(mybodydata);
 
-  data.save(function(err) {
-    if (err) {
-      res.render("home", { message: "No submission" });
-    } else {
-      res.render("home", { message: "you submitted your answer" });
-    }
-  });
-});
+//   data.save(function(err) {
+//     if (err) {
+//       res.render("home", { message: "No submission" });
+//     } else {
+//       res.render("home", { message: "you submitted your answer" });
+//     }
+//   });
+// });
 
 //Specific question
 router.get("/:postId", async (req, res) => {
   const specQuestion = await Questions.findById(req.params.postId);
-  res.json(specQuestion);
+  res.send(specQuestion);
 });
 
 //exports the module router to the main server.js

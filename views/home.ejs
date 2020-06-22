@@ -11,19 +11,19 @@
 
   <body>
     <div id="phone">
-      <header><h1>Answer</h1></header>
-      <main>
+      <header><h1><%= questionAsked.Que %></h1></header>
 
-        <section class="question-block"></section>
-        <section class="answer-block"><input /></section>
-      </main>
-      <%= questionAsked.Que %>
       <footer>
-        <button class="button"><a href="/home.ejs">delete</a></button>
-        <button class="button"><a href="/add">add</a></button>
-        <form method="POST"><button class="button">submit<a href="/display"></a></button></form>
+          <form method="post" action="/insert">
+            <input type="text" name="answer">
+            <button name="_id" value="<%=questionAsked._id %>" type="submit">Submit</button>
+        </form>
+
+        <form method="remove" action="/">
+          <button type="submit">remove</button>
+      </form>
       </footer>
-      <%= questionAsked.Que %>
+      <h1><%= questionAsked.Ans %></h1>
     </div>
     <script src="js/index.js"></script>
   </body>

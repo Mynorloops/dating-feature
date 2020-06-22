@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 require("dotenv/config");
 const bodyParser = require("body-parser");
 const questionModel = require("../dating-feature/models/Questions");
-const Routes = require("./routes/questionRouter");
+// const Routes = require("./routes/questionRouter");
 const sessions = require("express-session");
 //The set-up to the data base
 mongoose.connect(
@@ -18,24 +18,84 @@ mongoose.connect(
 
 //Use this to specify that I'm using EJS
 app.set("view engine", "ejs");
-
-//middleware for routing to question-array for testing purpuses
-
 app.use(bodyParser.json());
-app.use("/index", Routes); //Route for API
-app.use(express.static(__dirname + "/static")); //lets me use static files like images and css
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
+app.use(express.static(__dirname + "/static"));
 
-//Home
 app.get("/", (req, res) => {
   let randomQuestionId = Math.floor(Math.random() * 3 + 1);
 
   const questionQuery = questionModel.findOne(
     { id: randomQuestionId },
-    "Que",
+
     function(err, question) {
       if (err) return handleError(err);
       res.render("home", { questionAsked: question });
     }
+  );
+});
+
+// app.post("/", (req, res) => {
+//   var inputAnswer = new questionModel({
+//     Answer: req.body.Ans
+//   });
+//   post.save(function(err, post) {
+//     if (err) {
+//       return next(err);
+//     }
+//     res.json(201, inputAnswer);
+//   });
+// });
+
+// app.post("/", function(req, res) {
+//   let answer = req.body.answer;
+//   const savedPost = answer.save();
+//   res.json(savedPost);
+// });
+
+app.post("/insert", function(req, res) {
+  console.log(req.body.answer, req.body._id);
+  questionModel.findByIdAndUpdate(
+    { _id: req.body._id },
+    { Ans: req.body.answer },
+    function(err, question) {
+      if (err) return handleError(err);
+      res.render("home", { questionAsked: question });
+    }
+  );
+});
+
+//Home with variables
+
+// POSTs json info to the database
+// app.post("/", async (req, res) => {
+//   const post = new Questions({
+//     Que: req.body.Que,
+//     Ans: req.body.Ans
+//   });
+//   try {
+//     const savedPost = await post.save();
+//     res.json(savedPost);
+//   } catch (err) {
+//     res.json({ message: err });
+//   }
+// });
+
+//delete
+app.delete("/:questionsId", (req, res) => {
+  console.log(req.body);
+  const deletequestion = Questions.remove({ _id: req.body.postId });
+});
+
+//update
+app.patch("/:questionsId", (req, res) => {
+  const updateAnswer = Questions.remove(
+    { _id: req.params.postId },
+    { $set: { Ans: req.body.Ans } }
   );
 });
 
