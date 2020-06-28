@@ -4,7 +4,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
   font-size: 12.5pt;
-  background-color: grey;
+  background-color: #dbf5ff;
   color: azure;
 }
 
@@ -24,7 +24,7 @@ footer {
   border-radius: 10px;
   border-color: rgb(255, 0, 0);
   border-width: 2px;
-  border: solid;
+  /* border: solid; */
   display: flex;
   justify-content: center;
   padding: 10px;
@@ -44,12 +44,23 @@ footer {
   overflow: hidden;
 }
 
+header {
+  height: 80px;
+}
+
+main {
+  height: 250px;
+  border: #ffb2ea;
+  border-style: solid;
+  border-radius: 15px;
+}
+
 button {
   display: flex;
   align-content: center;
   width: 50px;
   height: 50px;
-  background-color: lightgray;
+  background-color: #ffb2ea;
   border: solid;
   border-radius: 40px;
   border-color: azure;
